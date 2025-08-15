@@ -5,217 +5,599 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/7b12bcc245.js"
       crossorigin="anonymous"
     ></script>
-    <title>Wedding Invite</title>
+    <title>Pwafu & Hope - Wedding Invitation</title>
   </head>
   <body>
-    <nav>
-      <input type="checkbox" id="check" />
-      <label for="check" class="checkbtn">
-        <i class="fas fa-bars"></i>
-      </label>
-      <label class="logo">P&H</label>
-      <ul class="text">
-        <li><a href="#story" onclick="myFunction()">OUR STORY</a></li>
-        <li><a href="#stay" onclick="myFunction()">TRAVEL & STAY</a></li>
-        <li><a href="#registry" onclick="myFunction()">PROMISES</a></li>
-      </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <span class="logo-text">P&H</span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+          <a href="#home" class="nav-link">Home</a>
+          <a href="#story" class="nav-link">Our Story</a>
+          <a href="#details" class="nav-link">Details</a>
+          <a href="#gallery" class="nav-link">Gallery</a>
+          <a href="#rsvp" class="nav-link">RSVP</a>
+        </div>
+        <div class="nav-toggle" id="nav-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
     </nav>
 
-    <div class="home hz-margin">
-      <h3>We are getting married</h3>
-      <h1>Pwafu & Hope</h1>
-      <div class="container-out">
-        <div class="container-in text">
-          Friday, Nov. 21st, 2025 (White Wedding)
-          <br />
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-background">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="hero-text">
+            <p class="hero-subtitle">We are getting married</p>
+            <h1 class="hero-title">Pwafu & Hope</h1>
 
-          <button class="huge-btn">RSVP</button>
+            <div class="hero-date">
+              <div class="date-main">Friday, November 21st, 2025</div>
+              <div class="date-subtitle">White Wedding</div>
+              <div class="countdown">
+                <div class="countdown-item">
+                  <span class="countdown-number">--</span>
+                  <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number">--</span>
+                  <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number">--</span>
+                  <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                  <span class="countdown-number">--</span>
+                  <span class="countdown-label">Seconds</span>
+                </div>
+              </div>
+            </div>
+            <button class="cta-button" onclick="scrollToSection('rsvp')">
+              <span>RSVP Now</span>
+              <i class="fas fa-heart"></i>
+            </button>
+          </div>
         </div>
-        <div class="home-img" id="home-img-lg"></div>
       </div>
-    </div>
+      <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+      </div>
+    </section>
 
-    <div class="home-img home-img-sm"></div>
-    <div class="timeline hz-margin reveal">
-      <h2>
-        Celebrating Our Love <br />
-        With Those We Love
-      </h2>
-      <div class="timeline-container">
-        <div class="timeline-img"></div>
-        <div class="timings">
-          <h3>01.&nbsp &nbsp Ceremony - Strictly by Invitation</h3>
-          <div class="text">
-            <b>Traditional wedding</b> - Mope outdoor courtyard,<br />
-            Numan, Adamawa state
+    <!-- Timeline Section -->
+    <section id="details" class="timeline-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Celebrating Our Love</h2>
+          <p class="section-subtitle">With Those We Love</p>
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <div class="timeline-number">01</div>
+            <div class="timeline-content">
+              <h3>Ceremony - Strictly by Invitation</h3>
+              <div class="timeline-details">
+                <div class="ceremony-item">
+                  <h4>Traditional Wedding</h4>
+                  <p>Mope outdoor courtyard, Numan, Adamawa state</p>
+                </div>
+                <div class="ceremony-item">
+                  <h4>White Wedding</h4>
+                  <p>Holy Trinity Anglican Church, Choba, Port-Harcourt</p>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="text">
-            <b> White Wedding</b> - Holy trinity Anglican Church <br />
-            Choba, Port-Harcourt.
-          </div>
-          <h3>02.&nbsp &nbsp Reception</h3>
-          <div class="text">
-            The Arena 30 Tombia street.New GRA Phase 2,<br />
-            Portharcourt, Rivers State
+
+          <div class="timeline-item">
+            <div class="timeline-number">02</div>
+            <div class="timeline-content">
+              <h3>Reception</h3>
+              <div class="timeline-details">
+                <p>
+                  The Arena, 30 Tombia Street, New GRA Phase 2, Port Harcourt,
+                  Rivers State
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
 
-    <div class="v-reposition-container">
-      <div class="h-reposition-container">
-        <div id="story" class="hz-margin">
-          <h3 class="reveal">
-            Not Just an <br />
-            Ordinary Love Story
-            <div class="gallery-img"></div>
-            <div class="gallery-img"></div>
-            <div class="gallery-img"></div>
-          </h3>
-          <h1>How we met</h1>
-          <p class="text reveal">
-            Our love story began in the most unexpected way with a sarcastic
-            WhatsApp message. We were both on a group chat which he created for
-            scholars going to the same school through the PTDF scholarship. I
-            was preparing to travel to Malaysia for a master’s degree, and he
-            was also preparing to travel for his PhD in Malaysia. I reached out
-            to him the first-time regarding visa application details, and let’s
-            just say his sarcastic reply got me pissed.<br /><br />
-            Few weeks later, I had issues uploading my passport photo on the
-            visa application portal due to size constraints, so I decided to
-            reach out to him the second time because he had already completed
-            this phase. He helped me resize multiple times until it eventually
-            went through, I appreciated his effort and my perception about him
-            changed (positively). We did not communicate again until when we met
-            in Malaysia in February 2022.<br /><br />
-            My housemate (now my close friend) happened to be his friend as
-            well, so he visited us frequently. Overtime, we became a clique of 4
-            friends, myself, Rashida, Fatima and my fiancé (who was just a
-            friend then). He invited me to church one day, and we started going
-            to church together. This made us become close friends. He is very
-            smart and was always ready to help me figure out my coursework or
-            research in school.<br /><br />
-            Few months down the line, he expressed his feelings and said he
-            wanted us to be together, but I just wanted us to be friends, so we
-            stayed friends. He didn’t give up and was very patient despite my
-            stance. I concluded my masters in May 2023 and was prepared to
-            return to Nigeria; he became worried about the uncertainty of us
-            meeting again. I eventually returned to Nigeria and though miles
-            apart, we kept in touch and even played games like scrabble
-            online…lol. When he visited Nigeria in December 2023, he asked me to
-            be his girlfriend and this time, I said yes. Life has been so
-            beautiful with him, and I know he’s God’s gift to me.<br /><br />
-            In May 2025, he proposed and here we are now. He’s a man that’s so
-            thoughtful, loving, caring and intentional. I love him so much and I
-            pray that God keeps us together forever in love, Amen.
+    <!-- Story Section -->
+    <section id="story" class="story-section">
+      <div class="container">
+        <div class="story-content">
+          <div class="story-header">
+            <h2 class="section-title">Not Just an Ordinary Love Story</h2>
+            <p class="section-subtitle">
+              Our journey began with a simple WhatsApp message and evolved into
+              a beautiful love story that spans continents.
+            </p>
+          </div>
+
+          <div class="story-image">
+            <img src="assets/w-2.jpeg" alt="Our Love Story" class="story-img" />
+          </div>
+
+          <div class="story-text">
+            <p class="story-intro">
+              Our love story began in the most unexpected way with a sarcastic
+              WhatsApp message. We were both on a group chat which he created
+              for scholars going to the same school through the PTDF
+              scholarship.
+            </p>
+
+            <div class="story-body">
+              <p>
+                I was preparing to travel to Malaysia for a master's degree, and
+                he was also preparing to travel for his PhD in Malaysia. I
+                reached out to him the first time regarding visa application
+                details, and let's just say his sarcastic reply got me pissed.
+              </p>
+
+              <p>
+                Few weeks later, I had issues uploading my passport photo on the
+                visa application portal due to size constraints, so I decided to
+                reach out to him the second time because he had already
+                completed this phase. He helped me resize multiple times until
+                it eventually went through. I appreciated his effort and my
+                perception about him changed positively.
+              </p>
+
+              <p>
+                We did not communicate again until when we met in Malaysia in
+                February 2022. My housemate (now my close friend) happened to be
+                his friend as well, so he visited us frequently. Overtime, we
+                became a clique of 4 friends: myself, Rashida, Fatima and my
+                fiancé (who was just a friend then).
+              </p>
+
+              <p>
+                He invited me to church one day, and we started going to church
+                together. This made us become close friends. He is very smart
+                and was always ready to help me figure out my coursework or
+                research in school.
+              </p>
+
+              <p>
+                Few months down the line, he expressed his feelings and said he
+                wanted us to be together, but I just wanted us to be friends, so
+                we stayed friends. He didn't give up and was very patient
+                despite my stance.
+              </p>
+
+              <p>
+                I concluded my masters in May 2023 and was prepared to return to
+                Nigeria; he became worried about the uncertainty of us meeting
+                again. I eventually returned to Nigeria and though miles apart,
+                we kept in touch and even played games like scrabble online…lol.
+              </p>
+
+              <p>
+                When he visited Nigeria in December 2023, he asked me to be his
+                girlfriend and this time, I said yes. Life has been so beautiful
+                with him, and I know he's God's gift to me. In May 2025, he
+                proposed and here we are now.
+              </p>
+
+              <p>
+                He's a man that's so thoughtful, loving, caring and intentional.
+                I love him so much and I pray that God keeps us together forever
+                in love, Amen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+      <div class="container">
+        <div class="quote-content">
+          <blockquote class="quote-text">
+            "To the world you are one person, but to me you are the world"
+          </blockquote>
+          <cite class="quote-author">— Azubuike</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Precious Moments</h2>
+          <p class="section-subtitle">Capturing the journey of our love</p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img
+              src="assets/a1.jpeg"
+              alt="Beautiful moment 1"
+              class="gallery-img"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/a2.jpeg"
+              alt="Beautiful moment 2"
+              class="gallery-img"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/a3.jpeg"
+              alt="Beautiful moment 3"
+              class="gallery-img"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/w-1.jpeg"
+              alt="Beautiful moment 4"
+              class="gallery-img"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/w-3.jpeg"
+              alt="Beautiful moment 5"
+              class="gallery-img"
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="assets/w-4.jpeg"
+              alt="Beautiful moment 6"
+              class="gallery-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel & Stay Section -->
+    <section class="travel-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Travel & Accommodation</h2>
+          <p class="section-subtitle">
+            Everything you need to know for your visit
           </p>
         </div>
 
-        <div class="gallery hz-margin reveal">
-          <div class="gallery-img"></div>
-          <div class="gallery-img"></div>
-          <div class="gallery-img"></div>
+        <div class="travel-grid">
+          <div class="travel-card">
+            <div class="travel-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h3>Getting There</h3>
+            <p>
+              Easy-to-follow directions to the venue with detailed maps and
+              transportation options.
+            </p>
+            <a
+              href="https://share.google/KjziPL0RBnqmH7NRN"
+              class="travel-link"
+              target="_blank"
+            >
+              <span>View Map & Details</span>
+              <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+
+          <div class="travel-card">
+            <div class="travel-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3>Local Attractions</h3>
+            <p>
+              Discover the best restaurants, cafes, and attractions in the area
+              during your stay.
+            </p>
+            <button class="travel-link" onclick="showRecommend">
+              <span>Our Recommendations</span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="travel-card">
+            <div class="travel-icon">
+              <i class="fas fa-bed"></i>
+            </div>
+            <h3>Where to Stay</h3>
+            <p>
+              Curated selection of hotels and B&Bs for your comfort and
+              convenience.
+            </p>
+            <button class="travel-link" onclick="showLodging">
+              <span>Lodging Options</span>
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promises Section -->
+    <section class="promises-section">
+      <div class="container">
+        <div class="promises-content">
+          <div class="promises-text">
+            <h2 class="section-title">My Promises to You</h2>
+            <div class="promises-body">
+              <p>
+                Over the past years, you have proved over and over again that
+                our love stands at the centre of all. You have mesmerised me
+                with care, kindness and support. Maybe, you were the one I was
+                crying to see at birth (laughs).
+              </p>
+
+              <p>
+                Your actions and inactions brought us to this wonderful day we
+                celebrate. I am overwhelmed with a love I never knew existed. As
+                we begin our forever dystopia journey, All roads leads to you!
+              </p>
+
+              <p>
+                I promise to be your best friend, your confidant, and your
+                biggest supporter. I promise to cherish you, to love you
+                unconditionally, and to always make your happiness a priority.
+              </p>
+
+              <p>
+                I promise to laugh with you, to cry with you, and to face every
+                challenge life throws our way, hand in hand. We will build a
+                home filled with warmth, laughter, and endless love.
+              </p>
+
+              <p>
+                I will always be your safe harbor, your Chief, your King and the
+                one who will always believe in you, even when you doubt
+                yourself. We will raise wonderful children, and our love will
+                last till eternity.
+              </p>
+
+              <div class="promises touch">
+                <strong>— Dr Azubuike (Husband)</strong>
+              </div>
+            </div>
+
+            <button class="cta-button secondary" onclick="showBlessing">
+              <span>Bless Us</span>
+              <i class="fas fa-pray"></i>
+            </button>
+          </div>
+
+          <div class="promises-image">
+            <img src="assets/w-4.jpeg" alt="Our Love" class="promises-img" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="rsvp-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Will You Join Us?</h2>
+          <p class="section-subtitle">Please RSVP to confirm your attendance</p>
         </div>
 
-        <div class="quote reveal">
-          <h1>
-            “To the world you are one person, but to me you are the world”.
-          </h1>
-          <div class="author text">Azubuike</div>
-        </div>
+        <div class="rsvp-content">
+          <div class="rsvp-form">
+            <form id="rsvpForm" class="form">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
 
-        <div class="hands" id="parallax1"></div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
 
-        <div id="stay">
-          <h2 class="reveal">Travel and Stay</h2>
-          <div class="stay-container reveal">
-            <div class="stay-item">
-              <h3>
-                01. <br />
-                Getting There
-              </h3>
-              <div class="text">
-                Easy-to-follow <br />
-                directions to the venue
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" />
               </div>
-              <a
-                href="https://share.google/KjziPL0RBnqmH7NRN"
-                class="text links"
-                target="_blank"
-                >MAP & DETAILS</a
-              >
-            </div>
-            <div class="stay-item">
-              <h3>
-                02. <br />
-                Once You're There
-              </h3>
-              <div class="text">
-                Some fun things to do in <br />
-                the area
+
+              <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <select id="guests" name="guests" required>
+                  <option value="">Select number of guests</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5+</option>
+                </select>
               </div>
-              <div class="text links">OUR RECOMMENDATIONS</div>
-            </div>
-            <div class="stay-item">
-              <h3>
-                03. <br />
-                Where to Stay
-              </h3>
-              <div class="text">
-                Hotels and B&Bs <br />
-                to check out
+
+              <div class="form-group">
+                <label for="attending">Will you be attending?</label>
+                <div class="radio-group">
+                  <label class="radio-label">
+                    <input type="radio" name="attending" value="yes" required />
+                    <span class="radio-custom"></span>
+                    Yes, I'll be there!
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="attending" value="no" required />
+                    <span class="radio-custom"></span>
+                    Sadly, I cannot attend
+                  </label>
+                </div>
               </div>
-              <div class="text links">LODGING OPTIONS</div>
+
+              <div class="form-group">
+                <label for="message">Message (Optional)</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Share your thoughts or any special requests..."
+                ></textarea>
+              </div>
+
+              <button type="submit" class="cta-button">
+                <span>Send RSVP</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="rsvp-info">
+            <div class="info-card">
+              <h3>Contact Information</h3>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <strong>Manuchim</strong>
+                  <span>+234 813 131 7276</span>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <strong>Benson</strong>
+                  <span>+234 803 582 9436</span>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <strong>Dorcas</strong>
+                  <span>+234 703 149 4975</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div id="registry">
-          <div class="registry-container reveal">
-            <h3>Promises</h3>
-            <div class="text">
-              Over the past years, you have proved over and over again that our
-              love stands at the centre of all. You have mesmerised me with
-              care, kindness and support. Maybe, you were the one i was crying
-              to see at birth (laughs). Your actions and inactions brought us to
-              this wonderful day we celebrate. I am overwhelmed with a love i
-              never knew existed. As we begin our forever journey, All roads
-              leads to you! I promise to be your best friend, your confidant,
-              and your biggest supporter. I promise to cherish you, to love you
-              unconditionally, and to always make your happiness a priority. I
-              promise to laugh with you, to cry with you, and to face every
-              challenge life throws our way, hand in hand. We will build a home
-              filled with warmth, laughter, and endless love. I will always be
-              your safe harbor, your Chief, your King and the one who will
-              always believe in you, even when you doubt yourself. We will raise
-              wonderful children, and our love will last till eternity.
-              <br />
-              Dr Azubuike (Husband)
-            </div>
-            <button class="huge-btn text">BLESS US</button>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <span class="logo-text">P&H</span>
+            <p>Pwafu & Hope</p>
           </div>
-          <div class="registry-img registry-img-lg" id="parallax2"></div>
-        </div>
-        <div class="registry-img registry-img-sm"></div>
-
-        <div class="parting-message reveal">
-          <h1>Hope to See You!</h1>
-          <button class="huge-btn">RSVP</button>
-        </div>
-
-        <footer>
-          <h2>RSVP</h2>
-          <h2>Manuchim +2348131317276</h2>
-          <h2>Benson +2348035829436</h2>
-          <h2>Dorcas +2347031494975</h2>
-          <div class="text">
-            © 2025 for Azubuike and Pwafu. Made by Chibueze
+          <div class="footer-text">
+            <p>© 2025 Azubuike and Pwafu. Made with ❤️ by Chibueze</p>
           </div>
-        </footer>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal for Recommendations -->
+    <div id="recommendationsModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Local Recommendations</h2>
+        <div class="recommendations-list">
+          <div class="recommendation-item">
+            <h3>Restaurants</h3>
+            <ul>
+              <li>Sky Restaurant - Fine dining with city views</li>
+              <li>Ocean Breeze - Fresh seafood specialties</li>
+              <li>Garden Cafe - Cozy atmosphere with local cuisine</li>
+            </ul>
+          </div>
+          <div class="recommendation-item">
+            <h3>Attractions</h3>
+            <ul>
+              <li>Port Harcourt Tourist Beach</li>
+              <li>Port Harcourt Zoo</li>
+              <li>Cultural Center</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Lodging -->
+    <div id="lodgingModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Accommodation Options</h2>
+        <div class="lodging-list">
+          <div class="lodging-item">
+            <h3>Hotels</h3>
+            <ul>
+              <li>Hotel Presidential - 5-star luxury</li>
+              <li>Eko Hotel - Modern amenities</li>
+              <li>Golden Tulip - Business friendly</li>
+            </ul>
+          </div>
+          <div class="lodging-item">
+            <h3>B&Bs</h3>
+            <ul>
+              <li>Cozy Corner Guesthouse</li>
+              <li>Riverside Retreat</li>
+              <li>Garden View Inn</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for Blessing -->
+    <div id="blessingModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Send Your Blessings</h2>
+        <p>
+          Thank you for wanting to bless us! Your prayers and well wishes mean
+          the world to us.
+        </p>
+        <div class="blessing-form">
+          <div class="form-group">
+            <label for="blessingName">Your Name</label>
+            <input
+              type="text"
+              id="blessingName"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="blessingMessage">Your Blessing</label>
+            <textarea
+              id="blessingMessage"
+              rows="4"
+              placeholder="Share your blessing, prayer, or well wishes..."
+            ></textarea>
+          </div>
+          <button class="cta-button" onclick="submitBlessing()">
+            <span>Send Blessing</span>
+            <i class="fas fa-heart"></i>
+          </button>
+        </div>
       </div>
     </div>
 
