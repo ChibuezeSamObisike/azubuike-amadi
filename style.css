@@ -1252,7 +1252,7 @@ h6 {
 
   .countdown-label {
     font-size: 0.8rem;
-    color: white;
+    color: var(--text-white);
   }
 
   .story-section {
