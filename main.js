@@ -360,23 +360,23 @@ function showBlessing() {
   }
 
   // =================== COUNTDOWN TIMER ===================
-  function updateCountdown() {
-    const weddingDate = new Date('November 21, 2025 00:00:00').getTime();
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
+  // Countdown target: local time Nov 21, 2025 00:00:00
+  const countdownTargetMs = new Date(2025, 10, 21, 0, 0, 0).getTime(); // month is 0-based
+  let countdownTimerId = null;
 
-    if (distance > 0) {
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  function renderCountdown(distanceMs) {
+    const safeDistance = Math.max(0, distanceMs);
+    const days = Math.floor(safeDistance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (safeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((safeDistance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((safeDistance % (1000 * 60)) / 1000);
 
-      // Update countdown display if it exists
-      const countdownElement = document.querySelector('.countdown');
-      if (countdownElement) {
-        countdownElement.innerHTML = `
+    const countdownElement = document.querySelector('.countdown');
+    if (!countdownElement) return;
+
+    countdownElement.innerHTML = `
         <div class="countdown-item">
           <span class="countdown-number">${days}</span>
           <span class="countdown-label">Days</span>
@@ -392,14 +392,27 @@ function showBlessing() {
         <div class="countdown-item">
           <span class="countdown-number">${seconds}</span>
           <span class="countdown-label">Seconds</span>
-        </div>
-      `;
+        </div>`;
+  }
+
+  function updateCountdown() {
+    const nowMs = Date.now();
+    const distance = countdownTargetMs - nowMs;
+
+    if (distance <= 0) {
+      renderCountdown(0);
+      if (countdownTimerId) {
+        clearInterval(countdownTimerId);
+        countdownTimerId = null;
       }
+      return;
     }
+
+    renderCountdown(distance);
   }
 
   // Update countdown every second
-  setInterval(updateCountdown, 1000);
+  countdownTimerId = setInterval(updateCountdown, 1000);
   updateCountdown(); // Initial call
 
   // =================== SMOOTH SCROLL FOR ANCHOR LINKS ===================
