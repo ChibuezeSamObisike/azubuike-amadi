@@ -188,90 +188,91 @@ function closeInstagramModal() {
 
 function showBlessing() {
   showModal('blessingModal');
-  // =================== PROPOSAL VIDEO MODAL ===================
+}
+// =================== PROPOSAL VIDEO MODAL ===================
 
-  // =================== FORM HANDLING ===================
-  if (rsvpForm) {
-    rsvpForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
+// =================== FORM HANDLING ===================
+if (rsvpForm) {
+  rsvpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-      const formData = new FormData(rsvpForm);
-      const submitButton = rsvpForm.querySelector('button[type="submit"]');
-      const originalText = submitButton.innerHTML;
-
-      // Show loading state
-      submitButton.innerHTML =
-        '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
-      submitButton.disabled = true;
-
-      try {
-        // Simulate form submission (replace with actual API call)
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-
-        // Show success message
-        showNotification(
-          'Thank you for your RSVP! We look forward to celebrating with you.',
-          'success'
-        );
-        rsvpForm.reset();
-      } catch (error) {
-        showNotification(
-          'There was an error sending your RSVP. Please try again.',
-          'error'
-        );
-      } finally {
-        // Reset button state
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
-      }
-    });
-  }
-
-  // =================== BLESSING FORM ===================
-  function submitBlessing() {
-    const name = document.getElementById('blessingName').value.trim();
-    const message = document.getElementById('blessingMessage').value.trim();
-
-    if (!name || !message) {
-      showNotification(
-        'Please fill in both your name and blessing message.',
-        'error'
-      );
-      return;
-    }
-
-    // Simulate submission
-    const submitButton = document.querySelector('#blessingModal .cta-button');
+    const formData = new FormData(rsvpForm);
+    const submitButton = rsvpForm.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
 
+    // Show loading state
     submitButton.innerHTML =
       '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
     submitButton.disabled = true;
 
-    setTimeout(() => {
+    try {
+      // Simulate form submission (replace with actual API call)
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // Show success message
       showNotification(
-        'Thank you for your beautiful blessing! It means the world to us.',
+        'Thank you for your RSVP! We look forward to celebrating with you.',
         'success'
       );
-      hideModal('blessingModal');
-      document.getElementById('blessingName').value = '';
-      document.getElementById('blessingMessage').value = '';
-
+      rsvpForm.reset();
+    } catch (error) {
+      showNotification(
+        'There was an error sending your RSVP. Please try again.',
+        'error'
+      );
+    } finally {
+      // Reset button state
       submitButton.innerHTML = originalText;
       submitButton.disabled = false;
-    }, 1500);
+    }
+  });
+}
+
+// =================== BLESSING FORM ===================
+function submitBlessing() {
+  const name = document.getElementById('blessingName').value.trim();
+  const message = document.getElementById('blessingMessage').value.trim();
+
+  if (!name || !message) {
+    showNotification(
+      'Please fill in both your name and blessing message.',
+      'error'
+    );
+    return;
   }
 
-  // =================== NOTIFICATION SYSTEM ===================
-  function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach((notification) => notification.remove());
+  // Simulate submission
+  const submitButton = document.querySelector('#blessingModal .cta-button');
+  const originalText = submitButton.innerHTML;
 
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
+  submitButton.innerHTML =
+    '<span>Sending...</span><i class="fas fa-spinner fa-spin"></i>';
+  submitButton.disabled = true;
+
+  setTimeout(() => {
+    showNotification(
+      'Thank you for your beautiful blessing! It means the world to us.',
+      'success'
+    );
+    hideModal('blessingModal');
+    document.getElementById('blessingName').value = '';
+    document.getElementById('blessingMessage').value = '';
+
+    submitButton.innerHTML = originalText;
+    submitButton.disabled = false;
+  }, 1500);
+}
+
+// =================== NOTIFICATION SYSTEM ===================
+function showNotification(message, type = 'info') {
+  // Remove existing notifications
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach((notification) => notification.remove());
+
+  // Create notification element
+  const notification = document.createElement('div');
+  notification.className = `notification notification-${type}`;
+  notification.innerHTML = `
     <div class="notification-content">
       <i class="fas fa-${
         type === 'success'
@@ -285,8 +286,8 @@ function showBlessing() {
     </div>
   `;
 
-    // Add styles
-    notification.style.cssText = `
+  // Add styles
+  notification.style.cssText = `
     position: fixed;
     top: 20px;
     right: 20px;
@@ -303,80 +304,80 @@ function showBlessing() {
     transition: transform 0.3s ease;
   `;
 
-    // Add to page
-    document.body.appendChild(notification);
+  // Add to page
+  document.body.appendChild(notification);
 
-    // Animate in
-    setTimeout(() => {
-      notification.style.transform = 'translateX(0)';
-    }, 10);
+  // Animate in
+  setTimeout(() => {
+    notification.style.transform = 'translateX(0)';
+  }, 10);
 
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
+  // Close button functionality
+  const closeBtn = notification.querySelector('.notification-close');
+  closeBtn.addEventListener('click', () => {
+    notification.style.transform = 'translateX(100%)';
+    setTimeout(() => notification.remove(), 300);
+  });
+
+  // Auto-remove after 5 seconds
+  setTimeout(() => {
+    if (notification.parentNode) {
       notification.style.transform = 'translateX(100%)';
       setTimeout(() => notification.remove(), 300);
-    });
+    }
+  }, 5000);
+}
 
-    // Auto-remove after 5 seconds
-    setTimeout(() => {
-      if (notification.parentNode) {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
+// =================== PARALLAX EFFECTS ===================
+function handleParallax() {
+  const scrolled = window.pageYOffset;
+  const parallaxElements = document.querySelectorAll('[data-parallax]');
+
+  parallaxElements.forEach((element) => {
+    const speed = element.dataset.parallax || 0.5;
+    const yPos = -(scrolled * speed);
+    element.style.transform = `translateY(${yPos}px)`;
+  });
+}
+
+window.addEventListener('scroll', handleParallax);
+
+// =================== IMAGE LAZY LOADING ===================
+function lazyLoadImages() {
+  const images = document.querySelectorAll('img[data-src]');
+
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.remove('lazy');
+        imageObserver.unobserve(img);
       }
-    }, 5000);
-  }
-
-  // =================== PARALLAX EFFECTS ===================
-  function handleParallax() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('[data-parallax]');
-
-    parallaxElements.forEach((element) => {
-      const speed = element.dataset.parallax || 0.5;
-      const yPos = -(scrolled * speed);
-      element.style.transform = `translateY(${yPos}px)`;
     });
-  }
+  });
 
-  window.addEventListener('scroll', handleParallax);
+  images.forEach((img) => imageObserver.observe(img));
+}
 
-  // =================== IMAGE LAZY LOADING ===================
-  function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
+// =================== COUNTDOWN TIMER ===================
+function updateCountdown() {
+  const weddingDate = new Date('November 21, 2025 00:00:00').getTime();
+  const now = new Date().getTime();
+  const distance = weddingDate - now;
 
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.classList.remove('lazy');
-          imageObserver.unobserve(img);
-        }
-      });
-    });
-
-    images.forEach((img) => imageObserver.observe(img));
-  }
-
-  // =================== COUNTDOWN TIMER ===================
-  // Countdown target: local time Nov 21, 2025 00:00:00
-  const countdownTargetMs = new Date(2025, 10, 21, 0, 0, 0).getTime(); // month is 0-based
-  let countdownTimerId = null;
-
-  function renderCountdown(distanceMs) {
-    const safeDistance = Math.max(0, distanceMs);
-    const days = Math.floor(safeDistance / (1000 * 60 * 60 * 24));
+  if (distance > 0) {
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
-      (safeDistance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     );
-    const minutes = Math.floor((safeDistance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((safeDistance % (1000 * 60)) / 1000);
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+    // Update countdown display if it exists
     const countdownElement = document.querySelector('.countdown');
-    if (!countdownElement) return;
-
-    countdownElement.innerHTML = `
+    if (countdownElement) {
+      countdownElement.innerHTML = `
         <div class="countdown-item">
           <span class="countdown-number">${days}</span>
           <span class="countdown-label">Days</span>
@@ -392,66 +393,53 @@ function showBlessing() {
         <div class="countdown-item">
           <span class="countdown-number">${seconds}</span>
           <span class="countdown-label">Seconds</span>
-        </div>`;
-  }
-
-  function updateCountdown() {
-    const nowMs = Date.now();
-    const distance = countdownTargetMs - nowMs;
-
-    if (distance <= 0) {
-      renderCountdown(0);
-      if (countdownTimerId) {
-        clearInterval(countdownTimerId);
-        countdownTimerId = null;
-      }
-      return;
+        </div>
+      `;
     }
-
-    renderCountdown(distance);
   }
+}
 
-  // Update countdown every second
-  countdownTimerId = setInterval(updateCountdown, 1000);
-  updateCountdown(); // Initial call
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
 
-  // =================== SMOOTH SCROLL FOR ANCHOR LINKS ===================
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        const offsetTop = target.offsetTop - 80;
-        window.scrollTo({
-          top: offsetTop,
-          behavior: 'smooth',
-        });
-      }
-    });
+// =================== SMOOTH SCROLL FOR ANCHOR LINKS ===================
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offsetTop = target.offsetTop - 80;
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth',
+      });
+    }
+  });
+});
+
+// =================== ENHANCED FORM VALIDATION ===================
+function validateForm(form) {
+  const inputs = form.querySelectorAll(
+    'input[required], select[required], textarea[required]'
+  );
+  let isValid = true;
+
+  inputs.forEach((input) => {
+    if (!input.value.trim()) {
+      input.classList.add('error');
+      isValid = false;
+    } else {
+      input.classList.remove('error');
+    }
   });
 
-  // =================== ENHANCED FORM VALIDATION ===================
-  function validateForm(form) {
-    const inputs = form.querySelectorAll(
-      'input[required], select[required], textarea[required]'
-    );
-    let isValid = true;
+  return isValid;
+}
 
-    inputs.forEach((input) => {
-      if (!input.value.trim()) {
-        input.classList.add('error');
-        isValid = false;
-      } else {
-        input.classList.remove('error');
-      }
-    });
-
-    return isValid;
-  }
-
-  // Add error styles for form validation
-  const style = document.createElement('style');
-  style.textContent = `
+// Add error styles for form validation
+const style = document.createElement('style');
+style.textContent = `
   .form-group input.error,
   .form-group select.error,
   .form-group textarea.error {
@@ -499,45 +487,44 @@ function showBlessing() {
     letter-spacing: 1px;
   }
 `;
-  document.head.appendChild(style);
+document.head.appendChild(style);
 
-  // =================== INITIALIZATION ===================
-  document.addEventListener('DOMContentLoaded', () => {
-    // Initialize lazy loading
-    lazyLoadImages();
+// =================== INITIALIZATION ===================
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize lazy loading
+  lazyLoadImages();
 
-    // Add smooth reveal animations to elements
-    const elementsToReveal = document.querySelectorAll(
-      '.section-header, .timeline-item, .travel-card, .gallery-item'
-    );
-    elementsToReveal.forEach((element) => {
-      element.classList.add('reveal');
-    });
-
-    // Initialize scroll reveal
-    revealOnScroll();
-
-    // Add parallax data attributes to background images
-    const backgroundImages = document.querySelectorAll('.hero-background');
-    backgroundImages.forEach((element, index) => {
-      element.setAttribute('data-parallax', (index + 1) * 0.1);
-    });
+  // Add smooth reveal animations to elements
+  const elementsToReveal = document.querySelectorAll(
+    '.section-header, .timeline-item, .travel-card, .gallery-item'
+  );
+  elementsToReveal.forEach((element) => {
+    element.classList.add('reveal');
   });
 
-  // =================== PERFORMANCE OPTIMIZATION ===================
-  // Throttle scroll events for better performance
-  function throttle(func, limit) {
-    let inThrottle;
-    return function () {
-      const args = arguments;
-      const context = this;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => (inThrottle = false), limit);
-      }
-    };
-  }
+  // Initialize scroll reveal
+  revealOnScroll();
+
+  // Add parallax data attributes to background images
+  const backgroundImages = document.querySelectorAll('.hero-background');
+  backgroundImages.forEach((element, index) => {
+    element.setAttribute('data-parallax', (index + 1) * 0.1);
+  });
+});
+
+// =================== PERFORMANCE OPTIMIZATION ===================
+// Throttle scroll events for better performance
+function throttle(func, limit) {
+  let inThrottle;
+  return function () {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => (inThrottle = false), limit);
+    }
+  };
 }
 
 // Apply throttling to scroll events

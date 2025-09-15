@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suggest Music</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .music-page {
+        padding: 3rem 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .music-card {
+        background: var(--background-white);
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-medium);
+        padding: 1.5rem;
+      }
+      .music-header {
+        margin-bottom: 1rem;
+      }
+      .music-header h1 {
+        font-family: 'Playfair Display', serif;
+        color: var(--primary-color);
+        margin-bottom: 0.25rem;
+      }
+      .music-header p {
+        color: var(--text-light);
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .row.single {
+        grid-template-columns: 1fr;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .form-group label {
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+      .form-group input {
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        outline: none;
+      }
+      .help {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+      .suggestions {
+        position: relative;
+      }
+      .suggestion-list {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--background-white);
+        border: 1px solid var(--border-color);
+        border-top: none;
+        border-radius: 0 0 10px 10px;
+        box-shadow: var(--shadow-light);
+        z-index: 20;
+        max-height: 320px;
+        overflow: auto;
+      }
+      .suggestion-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 0.8rem;
+        cursor: pointer;
+      }
+      .suggestion-item:hover {
+        background: var(--background-light);
+      }
+      .thumb {
+        width: 64px;
+        height: 36px;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+      .title {
+        font-size: 0.95rem;
+        color: var(--text-dark);
+      }
+      .queue {
+        margin-top: 1.25rem;
+        border-top: 1px dashed var(--border-color);
+        padding-top: 1rem;
+      }
+      .queue h3 {
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+      .queue-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+      .queue-item:last-child {
+        border-bottom: none;
+      }
+      .small {
+        color: var(--text-light);
+        font-size: 0.85rem;
+      }
+      .actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .btn-inline {
+        cursor: pointer;
+        background: none;
+        border: none;
+        color: var(--secondary-color);
+        font-weight: 600;
+      }
+      .player-hide {
+        position: fixed;
+        width: 1px;
+        height: 1px;
+        bottom: -10px;
+        right: -10px;
+        opacity: 0;
+        pointer-events: none;
+      }
+      @media (max-width: 768px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="music-page">
+      <div class="music-card">
+        <div class="music-header">
+          <h1>Suggest Music for the Couple</h1>
+          <p>Share a song suggestion with us. We’ll receive it by email.</p>
+        </div>
+
+        <form id="musicSuggestForm">
+          <div class="row">
+            <div class="form-group">
+              <label for="name">Your Name (optional)</label>
+              <input id="name" type="text" placeholder="Jane Doe" />
+            </div>
+            <div class="form-group">
+              <label for="artist">Artist</label>
+              <input
+                id="artist"
+                type="text"
+                placeholder="Artist name"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="row single">
+            <div class="form-group">
+              <label for="title">Song Title</label>
+              <input id="title" type="text" placeholder="Song title" required />
+            </div>
+          </div>
+
+          <div class="row single">
+            <div class="form-group">
+              <label for="link">Link (optional)</label>
+              <input id="link" type="url" placeholder="https://..." />
+              <span class="help"
+                >If you have a link (YouTube/Spotify), paste it here.</span
+              >
+            </div>
+          </div>
+
+          <div class="row single">
+            <div class="form-group">
+              <label for="message">Message (optional)</label>
+              <textarea id="message" placeholder="Why this song?"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="cta-button">
+            <span>Send Suggestion</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
