@@ -314,9 +314,9 @@ h6 {
       rgba(44, 62, 80, 0.8),
       rgba(231, 76, 60, 0.8)
     ),
-    url('./assets/w-1.jpeg');
+    url('./assets/w-1.png');
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-attachment: fixed;
 }
 
