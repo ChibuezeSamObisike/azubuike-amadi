@@ -142,9 +142,135 @@
         opacity: 0;
         pointer-events: none;
       }
+      .suggestions-list {
+        margin-top: 2rem;
+        border-top: 1px solid var(--border-color);
+        padding-top: 1.5rem;
+      }
+      .suggestions-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .suggestions-header h3 {
+        color: var(--primary-color);
+        margin: 0;
+      }
+      .refresh-btn {
+        background: var(--secondary-color);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: background-color 0.2s;
+      }
+      .refresh-btn:hover {
+        background: var(--primary-color);
+      }
+      .suggestions-container {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid var(--border-color);
+        border-radius: 10px;
+        background: var(--background-light);
+      }
+      .song-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid var(--border-color);
+        background: var(--background-white);
+      }
+      .song-item:last-child {
+        border-bottom: none;
+      }
+      .song-info {
+        flex: 1;
+      }
+      .song-title {
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 0.25rem;
+      }
+      .song-artist {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+      }
+      .song-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.8rem;
+        color: var(--text-light);
+      }
+      .song-suggested-by {
+        color: var(--secondary-color);
+        font-weight: 500;
+      }
+      .song-date {
+        color: var(--text-light);
+      }
+      .song-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+      .song-link {
+        color: var(--secondary-color);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+      .song-link:hover {
+        text-decoration: underline;
+      }
+      .loading {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-light);
+      }
+      .empty-state {
+        text-align: center;
+        padding: 2rem;
+        color: var(--text-light);
+      }
+      .empty-state i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-color);
+      }
+      .success-message {
+        background: #d4edda;
+        color: #155724;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        border: 1px solid #c3e6cb;
+      }
+      .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        border: 1px solid #f5c6cb;
+      }
       @media (max-width: 768px) {
         .row {
           grid-template-columns: 1fr;
+        }
+        .song-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+        .song-actions {
+          align-self: flex-end;
         }
       }
     </style>
@@ -203,7 +329,21 @@
             <i class="fas fa-paper-plane"></i>
           </button>
         </form>
+
+        <!-- Song Suggestions List -->
+        <div class="suggestions-list" id="suggestionsList">
+          <div class="suggestions-header">
+            <h3>Song Suggestions</h3>
+            <button id="refreshSongs" class="refresh-btn">
+              <i class="fas fa-sync-alt"></i> Refresh
+            </button>
+          </div>
+          <div class="suggestions-container" id="suggestionsContainer">
+            <div class="loading" id="loadingSongs">Loading suggestions...</div>
+          </div>
+        </div>
       </div>
     </main>
+    <script src="music.js"></script>
   </body>
 </html>
